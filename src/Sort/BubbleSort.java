@@ -2,7 +2,7 @@
  * Created by Yedarm Seong on 2016-02-26.
  */
 
-package week01;
+package Sort;
 
 public class BubbleSort {
     public static void main(String args[]) {

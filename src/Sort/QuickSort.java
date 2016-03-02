@@ -2,7 +2,7 @@
  * Created by Yedarm Seong on 2016-03-01.
  */
 
-package week01;
+package Sort;
 
 public class QuickSort {
     public static void main(String args[]) {
