@@ -37,7 +37,6 @@ public class InsertionSort {
             for (int k = i; k > idx; k--) {
                 arr[k] = arr[k - 1];
             }
-
             arr[idx] = temp;
         }
     }
