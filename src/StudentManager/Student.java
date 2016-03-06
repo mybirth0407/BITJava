@@ -1,8 +1,5 @@
 package StudentManager;
 
-/**
- * Created by Yedarm Seong on 2016-03-05.
- */
 public class Student {
     private String name;
     private int age;
