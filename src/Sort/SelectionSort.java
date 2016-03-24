@@ -1,8 +1,8 @@
-package Sort;
+package sort;
 
 public class SelectionSort {
     public static void main(String args[]) {
-        System.out.println("Selection Sort");
+        System.out.println("Selection sort");
         int arr[] = {9, 1, 6, 8, 4, 3, 2};
 
         SelectionSort(arr);

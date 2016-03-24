@@ -1,6 +1,4 @@
-package StudentManager;
-
-import com.sun.xml.internal.ws.util.Pool;
+package studentmanager;
 
 import java.util.ArrayList;
 

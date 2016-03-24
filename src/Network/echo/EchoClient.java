@@ -1,4 +1,4 @@
-package Network.echo;
+package network.echo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,6 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.nio.Buffer;
 import java.util.Scanner;
 
 public class EchoClient {

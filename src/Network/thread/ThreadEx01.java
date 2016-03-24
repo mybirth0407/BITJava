@@ -1,4 +1,4 @@
-package Network.thread;
+package network.thread;
 
 public class ThreadEx01 {
     public static void main(String args[]) {

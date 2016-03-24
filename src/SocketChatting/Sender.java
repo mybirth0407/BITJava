@@ -1,4 +1,4 @@
-package SocketChatting;
+package socketchatting;
 
 import java.io.DataOutputStream;
 import java.io.IOException;

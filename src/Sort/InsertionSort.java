@@ -1,8 +1,8 @@
-package Sort;
+package sort;
 
 public class InsertionSort {
     public static void main(String args[]) {
-        System.out.println("Insertion Sort");
+        System.out.println("Insertion sort");
         int arr[] = {22, 10, 54, 25, 1, 5, 7};
 
         InsertionSort(arr);

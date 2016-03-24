@@ -1,4 +1,4 @@
-package ParentsChild;
+package parentschilds;
 
 public class Child extends Parents{
     public String getChildName() {

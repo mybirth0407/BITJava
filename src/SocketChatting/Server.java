@@ -1,4 +1,4 @@
-package SocketChatting;
+package socketchatting;
 
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -20,7 +20,6 @@ public class Server {
             receiver.start();
         }
         catch (Exception e) {
-
         }
     }
 }

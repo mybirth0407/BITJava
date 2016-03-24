@@ -1,4 +1,4 @@
-package Network.http;
+package network.http;
 
 import java.io.IOException;
 import java.net.InetAddress;

@@ -1,12 +1,10 @@
-package Sort;
-
-import jdk.nashorn.tools.Shell;
+package sort;
 
 import java.util.ArrayList;
 
 public class RadixSort {
     public static void main(String args[]) {
-        System.out.println("Radix Sort");
+        System.out.println("Radix sort");
         int arr[] = {170, 45, 75, 90, 2, 24, 802, 66};
 
         int sortedArr[] = RadixSort(arr);

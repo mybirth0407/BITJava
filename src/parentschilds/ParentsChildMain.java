@@ -1,4 +1,4 @@
-package ParentsChild;
+package parentschilds;
 
 public class ParentsChildMain {
     public static void main(String args[]) {

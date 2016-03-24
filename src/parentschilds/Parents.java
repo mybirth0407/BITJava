@@ -1,4 +1,4 @@
-package ParentsChild;
+package parentschilds;
 
 public class Parents {
     public String getMomName() {

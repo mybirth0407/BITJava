@@ -1,8 +1,8 @@
-package Sort;
+package sort;
 
 public class QuickSort {
     public static void main(String args[]) {
-        System.out.println("Quick Sort");
+        System.out.println("Quick sort");
         int arr[] = {2, 8, 7, 1, 3, 5, 6, 4};
 
         QuickSort(arr, 0, arr.length - 1);

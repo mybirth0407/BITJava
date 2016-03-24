@@ -1,4 +1,4 @@
-package FatherWallet;
+package fatherwallet;
 
 public class FatherWallet {
     public static int MONEY = 300;

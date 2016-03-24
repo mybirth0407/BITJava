@@ -1,4 +1,4 @@
-package StackQueue;
+package stackqueue;
 
 public class StackQueueMain {
     public static void main(String args[]) {

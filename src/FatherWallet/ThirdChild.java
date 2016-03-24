@@ -1,4 +1,4 @@
-package FatherWallet;
+package fatherwallet;
 
 public class ThirdChild {
     public boolean takeMoney(int money) {

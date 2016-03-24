@@ -1,4 +1,4 @@
-package LinkedList;
+package linkedlist;
 
 public class DoubleLinkedList<T> {
     Node head = null;

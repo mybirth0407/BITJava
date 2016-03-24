@@ -1,4 +1,4 @@
-package Network.thread;
+package network.thread;
 
 public class AlphabetThread extends Thread {
     @Override

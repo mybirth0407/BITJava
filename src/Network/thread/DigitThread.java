@@ -1,4 +1,4 @@
-package Network.thread;
+package network.thread;
 
 public class DigitThread extends Thread {
     @Override
