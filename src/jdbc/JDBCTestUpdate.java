@@ -27,7 +27,7 @@ public class JDBCTestUpdate {
             String sql =
                 "update pet " +
                 "set gender = 'f' " +
-                "where name = '마음이'";
+                "where name='마음이'";
             ResultSet rs = stmt.executeQuery(sql);
             rs.close();
         }

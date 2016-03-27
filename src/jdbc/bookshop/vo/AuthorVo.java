@@ -22,6 +22,6 @@ public class AuthorVo {
 
     @Override
     public String toString() {
-        return "AuthorVo [no=" + no + ", name=" + name + "]";
+        return "AuthorVo{}";
     }
 }
