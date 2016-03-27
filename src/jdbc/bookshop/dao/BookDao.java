@@ -14,7 +14,7 @@ public class BookDao {
             Class.forName("org.mariadb.jdbc.Driver");
             String url = "jdbc:mariadb://localhost:3306/webdb";
             conn = DriverManager.getConnection(
-                url, "yedarm", "roalclssha4!"
+                url, "webdb", "webdb"
             );
         }
         catch (ClassNotFoundException e) {
@@ -24,6 +24,38 @@ public class BookDao {
             e.printStackTrace();
         }
         return conn;
+    }
+
+    public void updateState(BookVo bookVo) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            conn = getConnection();
+            String sql =
+                "update book set state = ? where no = ?";
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, bookVo.getState());
+//            pstmt.setLong(2, bookVo.getNo());
+            pstmt.executeUpdate();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            }
+            catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 
     public List<BookVo> getList() {
@@ -107,42 +139,12 @@ public class BookDao {
         }
     }
 
-    public void updateState(BookVo bookVo) {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-
-        try {
-            conn = getConnection();
-            String sql =
-                "update book set state = ? where no = ?";
-
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, bookVo.getState());
-            pstmt.setLong(2, bookVo.getNo());
-            pstmt.executeUpdate();
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-        finally {
-            try {
-                if (pstmt != null) {
-                    pstmt.close();
-                }
-                if (conn != null) {
-                    conn.close();
-                }
-            }
-            catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
 
     public BookVo get(Long no) {
         BookVo bookVo = new BookVo();
         Connection conn = null;
         PreparedStatement pstmt = null;
+        ResultSet rs = null;
 
         try {
             //1. 드라이버 로드
@@ -165,15 +167,32 @@ public class BookDao {
             //4. SQL 실행
             pstmt.executeQuery();
 
+            if (rs.next()) {
+                Long getNo = rs.getLong(1);
+                String getTitle = rs.getString(2);
+                String getState = rs.getString(3);
+                String getAuthorName = rs.getString(4);
+
+                bookVo = new BookVo();
+                bookVo.setNo(getNo);
+                bookVo.setTitle(getTitle);
+                bookVo.setState(getState);
+                bookVo.setAuthorName(getAuthorName);
+            }
         }
         catch (SQLException ex) {
             System.out.println("SQL 오류:" + ex);
         }
         finally {
             try {
+                if (rs != null) {
+                    rs.close();
+                }
+
                 if (pstmt != null) {
                     pstmt.close();
                 }
+
                 if (conn != null) {
                     conn.close();
                 }
