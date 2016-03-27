@@ -3,6 +3,18 @@ import java.util.Scanner;
 
 public class test
 {
+    class Node
+    {
+        int value;
+        int index;
+
+        public Node(int value, int index)
+        {
+            this.value = value;
+            this.index = index;
+        }
+    }
+
     public static void main(String[] args)
     {
         new test().start();
@@ -48,18 +60,6 @@ public class test
             if (indexArray[i] != 0)
                 indexArray[i] += 1;
             System.out.print(indexArray[i]+" ");
-        }
-    }
-
-    class Node
-    {
-        int value;
-        int index;
-
-        public Node(int value, int index)
-        {
-            this.value = value;
-            this.index = index;
         }
     }
 
