@@ -10,7 +10,7 @@
     <input type = "text" name = "n" value = ""/>
     <br>
     비밀번호:
-    <input type = "password" name = "p" value = ""/>
+    <input type = "passwd" name = "p" value = ""/>
     <br>
     성별:
     <input type = "radio" name = "g" value = "m"/> 남자

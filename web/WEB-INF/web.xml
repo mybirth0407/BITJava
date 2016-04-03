@@ -16,4 +16,26 @@
     </servlet-mapping>
     <!-- -->
 
+    <!-- EmailListServlet -->
+    <servlet>
+        <servlet-name>emaillist-servlet</servlet-name>
+        <servlet-class>emaillist.EmailListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>emaillist-servlet</servlet-name>
+        <url-pattern>/bitservlet/emaillist/EmailListServlet</url-pattern>
+    </servlet-mapping>
+    <!-- -->
+
+    <!-- GuestBookServlet -->
+    <servlet>
+        <servlet-name>guestbook-servlet</servlet-name>
+        <servlet-class>guestbook.GuestBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>guestbook-servlet</servlet-name>
+        <url-pattern>/bitservlet/guestbook/GuestBookServlet</url-pattern>
+    </servlet-mapping>
+    <!-- -->
+
 </web-app>

@@ -2,7 +2,7 @@
 <%
   request.setCharacterEncoding("utf-8");
   String name = request.getParameter("n");
-  String password = request.getParameter("p");
+  String passwd = request.getParameter("p");
   String gender = request.getParameter("g");
   String hobbies[] = request.getParameterValues("h");
   String birthYear = request.getParameter("b");
@@ -13,7 +13,7 @@
 </head>
 <body>
   <%=name %> <br>
-  <%=password %> <br>
+  <%=passwd %> <br>
   <%=gender %> <br>
   <%
     for (String hobby: hobbies) {
