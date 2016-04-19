@@ -1,10 +1,10 @@
-package mysite.action;
+package mysite.action.user;
 
 import mysite.dao.UserDao;
+import mysite.db.WebDBConnection;
 import mysite.vo.UserVo;
-import db.WebDBConnection;
-import web.action.Action;
-import web.WebUtil;
+import mysite.web.WebUtil;
+import mysite.web.action.Action;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,25 +12,25 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class ModifyAction implements Action {
+public class UserModifyAction implements Action {
     @Override
     public void execute(
-        HttpServletRequest request, HttpServletResponse response)
+        HttpServletRequest req, HttpServletResponse res)
         throws ServletException, IOException {
-        HttpSession session = request.getSession();
+        HttpSession session = req.getSession();
         if (session == null) {
-            WebUtil.redirect(request, response, "/main");
+            WebUtil.redirect(req, res, "/main");
             return;
         }
         UserVo authUser = (UserVo) session.getAttribute("authUser");
         if (authUser == null) {
-            WebUtil.redirect(request, response, "/main");
+            WebUtil.redirect(req, res, "/main");
             return;
         }
 
-        String name = request.getParameter("name");
-        String password = request.getParameter("passwd");
-        String gender = request.getParameter("gender");
+        String name = req.getParameter("name");
+        String password = req.getParameter("passwd");
+        String gender = req.getParameter("gender");
 
         UserVo userVo = new UserVo();
         userVo.setNo(authUser.getNo());
@@ -46,6 +46,6 @@ public class ModifyAction implements Action {
         authUser.setName(name);
 
         // 리다이렉트
-        WebUtil.redirect(request, response, "/main");
+        WebUtil.redirect(req, res, "/main");
     }
 }

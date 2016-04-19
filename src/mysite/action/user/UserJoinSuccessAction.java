@@ -1,4 +1,4 @@
-package mysite.main;
+package mysite.action.user;
 
 import mysite.web.WebUtil;
 import mysite.web.action.Action;
@@ -8,14 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class IndexAction implements Action {
+public class UserJoinSuccessAction implements Action {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
         throws ServletException, IOException {
-//        Cookie cookie = new Cookie("testCookie", "helloworld");
-//        cookie.setMaxAge(60 * 60 * 24 * 1);
-//        cookie.setPath("/");
-//        res.addCookie(cookie);
-        WebUtil.forward(req, res, "/WEB-INF/mysite/views/main/index.jsp");
+        WebUtil.forward(
+            req, res, "/WEB-INF/mysite/views/user/joinsuccess.jsp");
     }
 }

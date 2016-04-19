@@ -1,8 +1,7 @@
 package mysite.main;
 
-
-import web.action.Action;
-import web.action.ActionFactory;
+import mysite.web.action.Action;
+import mysite.web.action.ActionFactory;
 
 public class MainActionFactory extends ActionFactory {
     @Override

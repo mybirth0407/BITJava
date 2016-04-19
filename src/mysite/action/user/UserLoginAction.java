@@ -1,10 +1,10 @@
-package mysite.action;
+package mysite.action.user;
 
 import mysite.dao.UserDao;
+import mysite.db.WebDBConnection;
 import mysite.vo.UserVo;
-import db.WebDBConnection;
-import web.WebUtil;
-import web.action.Action;
+import mysite.web.WebUtil;
+import mysite.web.action.Action;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class LoginAction implements Action {
+public class UserLoginAction implements Action {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
         throws ServletException, IOException {

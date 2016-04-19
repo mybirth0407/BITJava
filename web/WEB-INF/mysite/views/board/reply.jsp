@@ -3,7 +3,7 @@
          pageEncoding="UTF-8" %>
 <html>
 <head>
-  <title>으아아아아아앆</title>
+  <title>댓글이다아아강까까아깎</title>
   <meta http-equiv="content-type" message="text/html; charset=utf-8">
   <link href="/assets/css/board.css" rel="stylesheet" type="text/css">
 </head>
@@ -13,24 +13,29 @@
   <div id="content">
     <div id="board">
       <form class="board-form" method="post" action="/board">
-        <input type="hidden" name="a" value="write">
+        <input type="hidden" name="a" value="reply">
+        <input type="hidden" name="no" value="${boardVo.no}">
         <table class="tbl-ex">
           <tr>
-            <th colspan="2">글쓰기</th>
+            <th colspan="2">답글</th>
           </tr>
           <tr>
             <td class="label">제목</td>
-            <td><input type="text" name="title" value=""></td>
+            <td><input type="text" name="title"
+                       value="re: ${boardVo.title}"></td>
           </tr>
           <tr>
             <td class="label">내용</td>
             <td>
-              <textarea id="content" name="content"></textarea>
+              <textarea id="content"
+                        name="content">${boardVo.content}
+--------------------------------------------------------
+re: </textarea>
             </td>
           </tr>
         </table>
         <div class="bottom">
-          <a href="/board">취소</a>
+          <a href="/board?a=view&no=${boardVo.no}">취소</a>
           <input type="submit" value="등록">
         </div>
       </form>

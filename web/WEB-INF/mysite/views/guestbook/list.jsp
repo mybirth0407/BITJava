@@ -1,19 +1,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<% pageContext.setAttribute("newLine", "\r\n"); %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 
+<% pageContext.setAttribute("newLine", "\r\n"); %>
 <html>
 <head>
   <title>my site</title>
-  <meta http-equiv="message-type" message="text/html; charset=utf-8">
+  <meta http-equiv="content-type" message="text/html; charset=utf-8">
   <link href="/assets/css/guestbook.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="container">
   <c:import url="/WEB-INF/mysite/views/include/header.jsp"/>
-  <div id="message">
+  <div id="content">
     <div id="guestbook">
       <form action="/guestbook" method="post">
         <input type="hidden" name="a" value="insert">
@@ -26,7 +26,7 @@
           </tr>
           <tr>
             <td colspan=4>
-              <textarea name="message" id="message2"></textarea>
+              <textarea name="message" id="message"></textarea>
             </td>
           </tr>
           <tr>

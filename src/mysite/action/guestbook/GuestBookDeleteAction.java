@@ -1,16 +1,16 @@
-package mysite.action;
+package mysite.action.guestbook;
 
-import db.WebDBConnection;
 import mysite.dao.GuestBookDao;
-import web.WebUtil;
-import web.action.Action;
+import mysite.db.WebDBConnection;
+import mysite.web.WebUtil;
+import mysite.web.action.Action;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class DeleteAction implements Action {
+public class GuestBookDeleteAction implements Action {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
         throws ServletException, IOException {

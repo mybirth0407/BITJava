@@ -1,7 +1,8 @@
-package mysite.action;
+package mysite.action.user;
 
-import web.action.Action;
-import web.action.ActionFactory;
+import mysite.action.board.BoardDefaultAction;
+import mysite.web.action.Action;
+import mysite.web.action.ActionFactory;
 
 public class UserActionFactory extends ActionFactory {
     @Override
@@ -9,31 +10,34 @@ public class UserActionFactory extends ActionFactory {
         Action action = null;
 
         if ("joinform".equals(actionName)) {
-            action = new JoinFormAction();
+            action = new UserJoinFormAction();
         }
         else if ("join".equals(actionName)) {
-            action = new JoinAction();
+            action = new UserJoinAction();
         }
         else if ("joinsuccess".equals(actionName)) {
-            action = new JoinSuccessAction();
+            action = new UserJoinSuccessAction();
         }
         else if ("loginform".equals(actionName)) {
-            action = new LoginFormAction();
+            action = new UserLoginFormAction();
         }
         else if ("login".equals(actionName)) {
-            action = new LoginAction();
+            action = new UserLoginAction();
         }
         else if ("logout".equals(actionName)) {
-            action = new LogoutAction();
+            action = new UserLogoutAction();
         }
         else if ("modifyform".equals(actionName)) {
-            action = new ModifyFormAction();
+            action = new UserModifyFormAction();
         }
         else if ("modify".equals(actionName)) {
-            action = new ModifyAction();
+            action = new UserModifyAction();
+        }
+        else if ("checkemail".equals(actionName)) {
+            action = new UserCheckEmailAction();
         }
         else {
-            action = new DefaultAction();
+            action = new BoardDefaultAction();
         }
         return action;
     }

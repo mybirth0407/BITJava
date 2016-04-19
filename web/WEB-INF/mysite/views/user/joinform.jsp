@@ -4,9 +4,85 @@
 <!doctype html>
 <html>
 <head>
-  <title>mysite</title>
-  <meta http-equiv="message-type" message="text/html; charset=utf-8">
+  <title>예에에에~</title>
+  <meta http-equiv="content-type" message="text/html; charset=utf-8">
   <link href="/assets/css/user.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript"
+          src="/assets/js/jquery/jquery-1.9.0.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      $("#join-form").submit(function() {
+        /* 이름 유효성 검사 */
+        if ($("#name").val() == "") {
+          alert("이름은 필수 요소다!");
+          $("#name").focus();
+          return false;
+        }
+
+        /* 이메일 체크 */
+        if ($("#email").val() == "") {
+          alert("이메일은 필수 요소다!");
+          $("#email").focus();
+          return false;
+        }
+
+        if ($("#img-checkemail").is(":visible") == false) {
+          alert("이메일은 중복 체크를 하렴");
+          return false;
+        }
+
+        /* 패스워드 유효성 체크 */
+        /* 약관 체크, 제이쿼리 isChecked */
+        alert("제출하셈! 빰");
+        return true;
+      });
+
+      $("#email").change(function() {
+        $("#btn-checkemail").show();
+        $("#img-checkemail").hide();
+      });
+
+      $("#btn-checkemail").click(function() {
+        var email = $("#email").val();
+        if (email == "") {
+          return;
+        }
+        console.log(email);
+        $.ajax({
+          url: "/user?a=checkemail&email=" + email, // 요청 URL
+          type: "get", // 통신방식 get/post 둘중 하나
+          dataType: "json", //  수신 데이터 타입
+          data: "", //post방식인 경우 서버에 전달할 파라미터 데이터
+          // ex) a=checkemail&email=tyranosaurus@nate.com
+          // contentType:"application/json"
+          // 보내는 데이터가 JSON형식인 경우,
+          // 반드시 post방식인 경우로 보내야함
+          // ex)data 부분 :  "{"a":"checkemail", email:afsdf@naver.com"}"
+          // 성공시 callback
+          success: function(response) {
+            console.log(response);
+            if (response.result != "success") {
+              return;
+            }
+
+            if (response.data == false) {
+              alert("이미 존재하는 이메일임!");
+              $("#email").val("").focus();
+
+              return;
+            }
+
+            $("#btn-checkemail").hide();
+            $("#img-checkemail").show();
+          },
+          // 실패시 callback
+          error: function(jqXHR, status, error) {
+            console.error(status + ":" + error);
+          }
+        });
+      });
+    });
+  </script>
 </head>
 <body>
 <div id="container">
@@ -21,7 +97,9 @@
 
         <label class="block-label" for="email">이메일</label>
         <input id="email" name="email" type="text" value="">
-        <input type="button" value="id 중복체크">
+        <input id="btn-checkemail" type="button" value="id 중복체크">
+        <img id="img-checkemail" style="display:none;"
+             src="/assets/images/check.png">
 
         <label class="block-label">패스워드</label>
         <input name="passwd" type="password" value="">

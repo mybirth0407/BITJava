@@ -1,7 +1,7 @@
 package mysite.dao;
 
+import mysite.db.DBConnection;
 import mysite.vo.UserVo;
-import db.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +13,51 @@ public class UserDao {
 
     public UserDao(DBConnection dbConnection) {
         this.dbConnection = dbConnection;
+    }
+
+    public UserVo get(String email) {
+        UserVo userVo = null;
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        System.out.println("get: " + email);
+        try {
+            conn = dbConnection.getConnection();
+            String sql = "select no, email " +
+                "from user " +
+                "where email = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, email);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                userVo = new UserVo();
+                userVo.setNo(rs.getLong(1));
+                userVo.setEmail(rs.getString(2));
+            }
+            System.out.println("userVo" + userVo);
+            return userVo;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public UserVo get(Long userNo) {
@@ -125,7 +170,8 @@ public class UserDao {
 
         try {
             conn = dbConnection.getConnection();
-            String sql = "insert into user " + "values(null, ?, ?, password(?), ?)";
+            String sql = "insert into user " +
+                "values(null, ?, ?, password(?), ?)";
 
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, userVo.getName());

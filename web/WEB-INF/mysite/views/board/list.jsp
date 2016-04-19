@@ -1,20 +1,21 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<!DOCTYPE html>
+
 <html>
 <head>
-  <title>mysite</title>
-  <meta http-equiv="message-type" message="text/html; charset=utf-8">
+  <title>꾸아아아아아꺾앙ㄲ</title>
   <link href="/assets/css/board.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="container">
-  <jsp:include
-    page="/WEB-INF/mysite/views/include/header.jsp"/>
+  <c:import url="/WEB-INF/mysite/views/include/header.jsp"/>
   <div id="content">
     <div id="board">
-      <form id="search_form" action="" method="post">
-        <input type="text" id="kwd" name="kwd" value="">
+      <form id="search_form" action="/board" method="get">
+        <%--<input type="hidden" name="a" value="search">--%>
+        <input type="text" id="keyword" name="keyword" value="">
         <input type="submit" value="찾기">
       </form>
       <table class="tbl-ex">
@@ -26,40 +27,86 @@
           <th>작성일</th>
           <th>&nbsp;</th>
         </tr>
-        <tr>
-          <td>3</td>
-          <td><a href="">세 번째 글입니다.</a></td>
-          <td>안대혁</td>
-          <td>3</td>
-          <td>2015-10-11 12:04:20</td>
-          <td><a href="" class="del">삭제</a></td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td><a href="">두 번째 글입니다.</a></td>
-          <td>안대혁</td>
-          <td>3</td>
-          <td>2015-10-02 12:04:12</td>
-          <td><a href="" class="del">삭제</a></td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td><a href="">첫 번째 글입니다.</a></td>
-          <td>안대혁</td>
-          <td>3</td>
-          <td>2015-09-25 07:24:32</td>
-          <td><a href="" class="del">삭제</a></td>
-        </tr>
+        <c:forEach items="${list}" var="boardVo">
+          <tr>
+            <td>${boardVo.no}</td>
+            <td style="text-align: left;
+              padding-left: ${10 * boardVo.depth}px">
+                <%--<img src="/assets/images/reply.png">--%>
+              <a href="/board?a=view&no=${boardVo.no}">
+                  ${boardVo.title}</a></td>
+            <td>${boardVo.userName}</td>
+            <td>${boardVo.viewCount}</td>
+            <td>${boardVo.regDate}</td>
+            <c:choose>
+              <c:when test="${not empty authUser &&
+                              authUser.no == boardVo.userNo}">
+                <td><a href="/board?a=delete&no=${boardVo.no}"
+                       class="del">삭제</a></td>
+              </c:when>
+            </c:choose>
+          </tr>
+        </c:forEach>
       </table>
-      <div class="bottom">
-        <a href="" id="new-book">글쓰기</a>
+      <div class="pager">
+        <ul>
+          <c:if test="${pageMap.left == 1}">
+            <li>
+              <c:set var="startPage" value="${
+              pageMap.startPage - pageMap.N_PAGE}"/>
+              <a href="/board?page=${
+              startPage}&keyword=${
+              param.keyword}">◀
+              </a>
+            </li>
+          </c:if>
+          <c:forEach begin="${pageMap.startPage}"
+                     end="${pageMap.lastPage}"
+                     var="i">
+            <c:choose>
+              <c:when test="${i == pageMap.page}">
+                <li class="selected">
+                  <a href="board?page=${
+                  i}&keyword=${
+                  param.keyword}">${
+                  i}
+                  </a>
+                </li>
+              </c:when>
+              <c:otherwise>
+                <li><a href="board?page=${
+                i}&keyword=${
+                param.keyword}">${
+                i}
+                </a>
+                </li>
+              </c:otherwise>
+            </c:choose>
+          </c:forEach>
+          <c:if test="${pageMap.right == 1}">
+            <c:set var="lastPage" value="${pageMap.lastPage + 1}"/>
+            <li>
+              <a href="board?page=${
+              lastPage}&keyword=${
+              param.keyword}">▶
+              </a>
+            </li>
+          </c:if>
+        </ul>
       </div>
+      <c:choose>
+        <c:when test="${empty authUser}"></c:when>
+        <c:otherwise>
+          <div class="bottom">
+            <a href="/board?a=writeform"
+               id="new-book">글쓰기</a>
+          </div>
+        </c:otherwise>
+      </c:choose>
     </div>
   </div>
-  <jsp:include
-    page="/WEB-INF/mysite/views/include/navigation.jsp" />
-  <jsp:include
-    page="/WEB-INF/mysite/views/include/footer.jsp" />
+  <c:import url="/WEB-INF/mysite/views/include/navigation.jsp"/>
+  <c:import url="/WEB-INF/mysite/views/include/footer.jsp"/>
 </div>
 </body>
 </html>

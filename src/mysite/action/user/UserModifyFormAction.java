@@ -1,10 +1,10 @@
-package mysite.action;
+package mysite.action.user;
 
 import mysite.dao.UserDao;
+import mysite.db.WebDBConnection;
 import mysite.vo.UserVo;
-import db.WebDBConnection;
-import web.WebUtil;
-import web.action.Action;
+import mysite.web.WebUtil;
+import mysite.web.action.Action;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,30 +12,29 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class ModifyFormAction implements Action {
+public class UserModifyFormAction implements Action {
 
     @Override
     public void execute(
-        HttpServletRequest request, HttpServletResponse response)
+        HttpServletRequest req, HttpServletResponse res)
         throws ServletException, IOException {
-        HttpSession session = request.getSession();
+        HttpSession session = req.getSession();
         if (session == null) {
-            WebUtil.redirect(request, response, "/main");
+            WebUtil.redirect(req, res, "/main");
             return;
         }
 
         UserVo authUser = (UserVo) session.getAttribute("authUser");
         if (authUser == null) {
-            WebUtil.redirect(request, response, "/main");
+            WebUtil.redirect(req, res, "/main");
             return;
         }
 
-        UserDao dao = new UserDao(new WebDBConnection());
-        UserVo userVo = dao.get(authUser.getNo());
+        UserDao userDao = new UserDao(new WebDBConnection());
+        UserVo userVo = userDao.get(authUser.getNo());
 
-        request.setAttribute("userVo", userVo);
-        WebUtil.forward(request, response,
+        req.setAttribute("userVo", userVo);
+        WebUtil.forward(req, res,
             "/WEB-INF/mysite/views/user/modifyform.jsp");
     }
-
 }

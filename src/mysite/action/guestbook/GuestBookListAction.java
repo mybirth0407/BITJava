@@ -1,10 +1,10 @@
-package mysite.action;
+package mysite.action.guestbook;
 
-import db.WebDBConnection;
-import guestbook.dao.GuestBookDao;
-import guestbook.vo.GuestBookVo;
-import web.WebUtil;
-import web.action.Action;
+import mysite.dao.GuestBookDao;
+import mysite.db.WebDBConnection;
+import mysite.vo.GuestBookVo;
+import mysite.web.WebUtil;
+import mysite.web.action.Action;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class GuestListAction implements Action {
+public class GuestBookListAction implements Action {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
         throws ServletException, IOException {
@@ -21,6 +21,7 @@ public class GuestListAction implements Action {
 
         req.setAttribute("list", guestBookVoList);
 
-        WebUtil.forward(req, res, "/WEB-INF/mysite/views/guestbook/list.jsp");
+        WebUtil.forward(
+            req, res, "/WEB-INF/mysite/views/guestbook/list.jsp");
     }
 }

@@ -1,8 +1,8 @@
 package mysite.servlet;
 
 import mysite.main.MainActionFactory;
-import web.action.Action;
-import web.action.ActionFactory;
+import mysite.web.action.Action;
+import mysite.web.action.ActionFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

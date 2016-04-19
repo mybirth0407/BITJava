@@ -4,7 +4,7 @@
 <html>
 <head>
   <title>예~</title>
-  <meta http-equiv="message-type" message="text/html; charset=utf-8">
+  <meta http-equiv="content-type" message="text/html; charset=utf-8">
   <link href="/assets/css/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
