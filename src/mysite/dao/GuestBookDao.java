@@ -23,8 +23,8 @@ public class GuestBookDao {
             conn = dbConnection.getConnection();
             String sql =
                 "select * " +
-                "from guestbook " +
-                "where no = ?";
+                    "from guestbook " +
+                    "where no = ?";
             pstmt = conn.prepareStatement(sql);
 
             pstmt.setLong(1, no);
@@ -161,7 +161,7 @@ public class GuestBookDao {
             conn = dbConnection.getConnection();
             String sql =
                 "delete from guestbook " +
-                "where no = ? " +
+                    "where no = ? " +
                     "and passwd = password(?)";
 
             pstmt = conn.prepareStatement(sql);
@@ -274,14 +274,13 @@ public class GuestBookDao {
                 String regDate = rs.getString(3);
                 String message = rs.getString(4);
 
-                GuestBookVo vo = new GuestBookVo();
+                GuestBookVo guestBookVo = new GuestBookVo();
+                guestBookVo.setNo(no);
+                guestBookVo.setName(name);
+                guestBookVo.setRegDate(regDate);
+                guestBookVo.setMessage(message);
 
-                vo.setNo(no);
-                vo.setName(name);
-                vo.setRegDate(regDate);
-                vo.setMessage(message);
-
-                list.add(vo);
+                list.add(guestBookVo);
             }
         }
         catch (SQLException e) {

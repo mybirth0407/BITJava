@@ -450,7 +450,6 @@ public class BoardDao {
             }
         }
         return list;
-
     }
 
     public long searchCount(String keyword) {

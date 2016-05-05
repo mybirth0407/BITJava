@@ -60,7 +60,7 @@ public class GuestBookServlet extends HttpServlet {
         }
         else if ("deleteform".equals(actionName)) {
             RequestDispatcher requestDispatcher = req.getRequestDispatcher(
-                "/WEB-INF/mysite/views/guestbook/deleteform.jsp");
+                "/WEB-INF/guestbook/views/deleteform.jsp");
             requestDispatcher.forward(req, res);
         }
         else {
@@ -75,7 +75,7 @@ public class GuestBookServlet extends HttpServlet {
             /* forwarding(request 확장, request dispatcher) */
             RequestDispatcher requestDispatcher =
                 req.getRequestDispatcher(
-                    "/WEB-INF/mysite/views/guestbook/list.jsp");
+                    "/WEB-INF/guestbook/views/list.jsp");
             requestDispatcher.forward(req, res);
         }
     }

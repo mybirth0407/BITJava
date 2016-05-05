@@ -21,7 +21,7 @@ public class BoardListAction implements Action {
         throws ServletException, IOException {
         long page;
 
-        if (req.getParameter("page") == null) {
+        if (req.getParameter("page") ==null) {
             System.out.println("페이지 널이다 망했음");
             page = 1L;
         }

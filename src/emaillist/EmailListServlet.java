@@ -46,7 +46,7 @@ public class EmailListServlet extends HttpServlet {
         }
         else if ("form".equals(actionName)) {
             RequestDispatcher requestDispatcher = req.getRequestDispatcher(
-                "/WEB-INF/views/emaillist/form.jsp");
+                "/WEB-INF/emaillist/views/form.jsp");
             requestDispatcher.forward(req, res);
 
         }
@@ -61,7 +61,7 @@ public class EmailListServlet extends HttpServlet {
 
             /* forwarding(request 확장, request dispatcher) */
             RequestDispatcher requestDispatcher = req.getRequestDispatcher(
-                    "/WEB-INF/views/emaillist/index.jsp");
+                    "/WEB-INF/emaillist/views/index.jsp");
             requestDispatcher.forward(req, res);
         }
     }
