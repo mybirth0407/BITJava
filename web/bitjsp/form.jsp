@@ -34,8 +34,7 @@
     자기소개
     <textarea <jsp:text> </jsp:text>'
     <br>
-    <<textarea style = "width:200px"
-
+    <<textarea style = "width:200px"></textarea>
     <input type = "submit" value = 200px , height = 200px border solide
            #f00, bacogound--colof #f2ddd
      4000 />
